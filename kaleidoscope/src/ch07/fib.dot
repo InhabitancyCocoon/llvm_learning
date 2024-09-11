@@ -1,0 +1,10 @@
+digraph "CFG for 'fib' function" {
+	label="CFG for 'fib' function";
+
+	Node0xf04690 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{entry:\l  %cmptmp = fcmp ult double %x, 3.000000e+00\l  br i1 %cmptmp, label %ifcont, label %else\l|{<s0>T|<s1>F}}"];
+	Node0xf04690:s0 -> Node0xf45d40;
+	Node0xf04690:s1 -> Node0xf45cf0;
+	Node0xf45cf0 [shape=record,color="#3d50c3ff", style=filled, fillcolor="#f59c7d70",label="{else:                                             \l  %subtmp = fadd double %x, -1.000000e+00\l  %calltmp = call double @fib(double %subtmp)\l  %subtmp1 = fadd double %x, -2.000000e+00\l  %calltmp2 = call double @fib(double %subtmp1)\l  %addtmp = fadd double %calltmp, %calltmp2\l  br label %ifcont\l}"];
+	Node0xf45cf0 -> Node0xf45d40;
+	Node0xf45d40 [shape=record,color="#b70d28ff", style=filled, fillcolor="#b70d2870",label="{ifcont:                                           \l  %iftmp = phi double [ %addtmp, %else ], [ 1.000000e+00, %entry ]\l  ret double %iftmp\l}"];
+}
